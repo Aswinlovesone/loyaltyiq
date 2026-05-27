@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Redeem Rewards — LoyaltyIQ
+    </title>
+
+    <link rel="stylesheet" href="./css/style.css">
+
+    <link rel="stylesheet" href="./css/dashboard.css">
+
+    <link rel="stylesheet" href="./css/responsive.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+
+</head>
+
+<body>
+
+    <div class="dashboard-layout">
+
+        <!-- SIDEBAR -->
+
+        <aside class="sidebar">
+
+            <div class="sidebar-brand">
+
+                <div class="sb-logo">
+
+                    <i class="ti ti-gift"></i>
+
+                </div>
+
+                <div>
+
+                    <div class="sb-name">
+                        Redeem
+                    </div>
+
+                    <div class="sb-sub">
+                        Reward Redemption
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="sidebar-nav">
+
+                <a class="snav" href="dashboard.html">
+
+                    <i class="ti ti-layout-dashboard"></i>
+
+                    Dashboard
+
+                </a>
+
+                <a class="snav" href="staff.html">
+
+                    <i class="ti ti-users"></i>
+
+                    Staff
+
+                </a>
+
+                <a class="snav" href="customer.html">
+
+                    <i class="ti ti-user"></i>
+
+                    Customer
+
+                </a>
+
+                <a class="snav on" href="redeem.html">
+
+                    <i class="ti ti-gift"></i>
+
+                    Redeem
+
+                </a>
+
+            </div>
+
+        </aside>
+
+        <!-- MAIN -->
+
+        <main class="dashboard-main">
+
+            <h1 class="page-title">
+
+                Redeem Rewards
+
+            </h1>
+
+            <p class="page-sub">
+
+                Redeem customer loyalty rewards instantly.
+
+            </p>
+
+            <!-- SEARCH -->
+
+            <div class="card" style="margin-top:30px; max-width:700px;">
+
+                <div class="fgroup">
+
+                    <label class="flabel">
+
+                        Customer Phone Number
+
+                    </label>
+
+                    <input id="redeemPhone" type="tel" placeholder="9876543210">
+
+                </div>
+
+                <button id="loadRewardBtn" class="btn-primary">
+
+                    <i class="ti ti-search"></i>
+
+                    Load Rewards
+
+                </button>
+
+            </div>
+
+            <!-- RESULT -->
+
+            <div id="rewardResult" style="margin-top:30px;">
+
+                <div class="card">
+
+                    <p style="color:var(--muted);">
+
+                        Search customer to redeem rewards.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+    <script src="./js/redeem.js"></script>
+
+</body>
+
+</html>

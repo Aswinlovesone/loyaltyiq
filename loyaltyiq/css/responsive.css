@@ -1,0 +1,90 @@
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:1200px) {
+
+    .dashboard-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+
+        position: relative;
+
+        height: auto;
+    }
+
+}
+
+@media(max-width:768px) {
+
+    .hero-nav,
+    .features-section,
+    .benefits-section,
+    .pricing-section,
+    .dashboard-main {
+
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .hero-title {
+        font-size: 3.2rem;
+    }
+
+    .hero-actions {
+
+        flex-direction: column;
+
+        width: 100%;
+    }
+
+    .btn-hero-primary,
+    .btn-hero-ghost {
+
+        width: 100%;
+
+        justify-content: center;
+    }
+
+    .hstat-div {
+        display: none;
+    }
+
+    .cards-grid,
+    .metrics-row,
+    .features-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+    .page-title {
+        font-size: 2.4rem;
+    }
+
+}
+
+@media(max-width:500px) {
+
+    .hero-title {
+        font-size: 2.8rem;
+    }
+
+    .hero-sub {
+        font-size: 16px;
+    }
+
+    .page-title {
+        font-size: 2rem;
+    }
+
+    .mcard-val {
+        font-size: 34px;
+    }
+
+}

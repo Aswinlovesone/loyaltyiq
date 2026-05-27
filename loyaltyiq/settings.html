@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Settings — LoyaltyIQ
+    </title>
+
+    <link rel="stylesheet" href="./css/style.css">
+
+    <link rel="stylesheet" href="./css/dashboard.css">
+
+    <link rel="stylesheet" href="./css/responsive.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+
+</head>
+
+<body>
+
+    <div class="dashboard-layout">
+
+        <!-- SIDEBAR -->
+
+        <aside class="sidebar">
+
+            <div class="sidebar-brand">
+
+                <div class="sb-logo">
+
+                    <i class="ti ti-settings"></i>
+
+                </div>
+
+                <div>
+
+                    <div class="sb-name">
+
+                        Settings
+
+                    </div>
+
+                    <div class="sb-sub">
+
+                        Platform Preferences
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="sidebar-nav">
+
+                <a class="snav" href="dashboard.html">
+
+                    <i class="ti ti-layout-dashboard"></i>
+
+                    Dashboard
+
+                </a>
+
+                <a class="snav" href="staff.html">
+
+                    <i class="ti ti-users"></i>
+
+                    Staff
+
+                </a>
+
+                <a class="snav" href="customer.html">
+
+                    <i class="ti ti-user"></i>
+
+                    Customer
+
+                </a>
+
+                <a class="snav" href="redeem.html">
+
+                    <i class="ti ti-gift"></i>
+
+                    Redeem
+
+                </a>
+
+                <a class="snav" href="analytics.html">
+
+                    <i class="ti ti-chart-bar"></i>
+
+                    Analytics
+
+                </a>
+
+                <a class="snav on" href="settings.html">
+
+                    <i class="ti ti-settings"></i>
+
+                    Settings
+
+                </a>
+
+            </div>
+
+        </aside>
+
+        <!-- MAIN -->
+
+        <main class="dashboard-main">
+
+            <h1 class="page-title">
+
+                Settings
+
+            </h1>
+
+            <p class="page-sub">
+
+                Manage your business platform settings.
+
+            </p>
+
+            <!-- SETTINGS GRID -->
+
+            <div class="cards-grid" style="margin-top:30px;">
+
+                <!-- BUSINESS -->
+
+                <div class="card">
+
+                    <div class="card-title">
+
+                        Business Information
+
+                    </div>
+
+                    <div class="fgroup">
+
+                        <label class="flabel">
+
+                            Business Name
+
+                        </label>
+
+                        <input id="businessName" type="text" placeholder="LoyaltyIQ Cafe">
+
+                    </div>
+
+                    <div class="fgroup">
+
+                        <label class="flabel">
+
+                            Business Email
+
+                        </label>
+
+                        <input id="businessEmail" type="email" placeholder="contact@email.com">
+
+                    </div>
+
+                    <div class="fgroup">
+
+                        <label class="flabel">
+
+                            Phone Number
+
+                        </label>
+
+                        <input id="businessPhone" type="tel" placeholder="9876543210">
+
+                    </div>
+
+                </div>
+
+                <!-- REWARD SETTINGS -->
+
+                <div class="card">
+
+                    <div class="card-title">
+
+                        Reward Settings
+
+                    </div>
+
+                    <div class="fgroup">
+
+                        <label class="flabel">
+
+                            Reward Percentage
+
+                        </label>
+
+                        <input id="rewardPercent" type="number" placeholder="10">
+
+                    </div>
+
+                    <div class="fgroup">
+
+                        <label class="flabel">
+
+                            Currency
+
+                        </label>
+
+                        <input id="currency" type="text" placeholder="₹">
+
+                    </div>
+
+                    <div class="fgroup">
+
+                        <label class="flabel">
+
+                            Minimum Redeem Amount
+
+                        </label>
+
+                        <input id="minRedeem" type="number" placeholder="100">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- NOTIFICATIONS -->
+
+            <div class="card" style="margin-top:28px;">
+
+                <div class="card-title">
+
+                    Notifications
+
+                </div>
+
+                <div style="
+display:flex;
+flex-direction:column;
+gap:20px;
+">
+
+                    <label style="
+display:flex;
+align-items:center;
+gap:12px;
+">
+
+                        <input id="emailNotify" type="checkbox">
+
+                        Email Notifications
+
+                    </label>
+
+                    <label style="
+display:flex;
+align-items:center;
+gap:12px;
+">
+
+                        <input id="smsNotify" type="checkbox">
+
+                        SMS Notifications
+
+                    </label>
+
+                    <label style="
+display:flex;
+align-items:center;
+gap:12px;
+">
+
+                        <input id="rewardNotify" type="checkbox">
+
+                        Reward Alerts
+
+                    </label>
+
+                </div>
+
+            </div>
+
+            <!-- SAVE -->
+
+            <button id="saveSettingsBtn" class="btn-primary" style="
+margin-top:28px;
+">
+
+                <i class="ti ti-device-floppy"></i>
+
+                Save Settings
+
+            </button>
+
+        </main>
+
+    </div>
+
+    <script src="./js/settings.js"></script>
+
+</body>
+
+</html>

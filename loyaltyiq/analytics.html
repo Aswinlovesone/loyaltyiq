@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Analytics — LoyaltyIQ
+    </title>
+
+    <link rel="stylesheet" href="./css/style.css">
+
+    <link rel="stylesheet" href="./css/dashboard.css">
+
+    <link rel="stylesheet" href="./css/responsive.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+
+</head>
+
+<body>
+
+    <div class="dashboard-layout">
+
+        <!-- SIDEBAR -->
+
+        <aside class="sidebar">
+
+            <div class="sidebar-brand">
+
+                <div class="sb-logo">
+
+                    <i class="ti ti-chart-bar"></i>
+
+                </div>
+
+                <div>
+
+                    <div class="sb-name">
+
+                        Analytics
+
+                    </div>
+
+                    <div class="sb-sub">
+
+                        Business Insights
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="sidebar-nav">
+
+                <a class="snav" href="dashboard.html">
+
+                    <i class="ti ti-layout-dashboard"></i>
+
+                    Dashboard
+
+                </a>
+
+                <a class="snav" href="staff.html">
+
+                    <i class="ti ti-users"></i>
+
+                    Staff
+
+                </a>
+
+                <a class="snav" href="customer.html">
+
+                    <i class="ti ti-user"></i>
+
+                    Customer
+
+                </a>
+
+                <a class="snav" href="redeem.html">
+
+                    <i class="ti ti-gift"></i>
+
+                    Redeem
+
+                </a>
+
+                <a class="snav on" href="analytics.html">
+
+                    <i class="ti ti-chart-bar"></i>
+
+                    Analytics
+
+                </a>
+
+                <a class="snav" href="settings.html">
+
+                    <i class="ti ti-settings"></i>
+
+                    Settings
+
+                </a>
+
+            </div>
+
+        </aside>
+
+        <!-- MAIN -->
+
+        <main class="dashboard-main">
+
+            <!-- TOP -->
+
+            <div class="topbar">
+
+                <div>
+
+                    <h1 class="page-title">
+
+                        Advanced Analytics
+
+                    </h1>
+
+                    <p class="page-sub">
+
+                        Realtime business intelligence dashboard
+
+                    </p>
+
+                </div>
+
+                <button id="refreshAnalytics" class="btn-primary">
+
+                    <i class="ti ti-refresh"></i>
+
+                    Refresh Analytics
+
+                </button>
+
+            </div>
+
+            <!-- METRICS -->
+
+            <div class="metrics-row">
+
+                <div class="mcard">
+
+                    <div class="mcard-icon g">
+
+                        <i class="ti ti-currency-rupee"></i>
+
+                    </div>
+
+                    <div id="analyticsRevenue" class="mcard-val">
+
+                        ₹0
+
+                    </div>
+
+                    <div class="mcard-lbl">
+
+                        Total Revenue
+
+                    </div>
+
+                </div>
+
+                <div class="mcard">
+
+                    <div class="mcard-icon b">
+
+                        <i class="ti ti-users"></i>
+
+                    </div>
+
+                    <div id="analyticsCustomers" class="mcard-val">
+
+                        0
+
+                    </div>
+
+                    <div class="mcard-lbl">
+
+                        Customers
+
+                    </div>
+
+                </div>
+
+                <div class="mcard">
+
+                    <div class="mcard-icon a">
+
+                        <i class="ti ti-gift"></i>
+
+                    </div>
+
+                    <div id="analyticsRewards" class="mcard-val">
+
+                        ₹0
+
+                    </div>
+
+                    <div class="mcard-lbl">
+
+                        Rewards
+
+                    </div>
+
+                </div>
+
+                <div class="mcard">
+
+                    <div class="mcard-icon p">
+
+                        <i class="ti ti-repeat"></i>
+
+                    </div>
+
+                    <div id="analyticsRetention" class="mcard-val">
+
+                        0%
+
+                    </div>
+
+                    <div class="mcard-lbl">
+
+                        Retention
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- CHARTS -->
+
+            <div class="cards-grid" style="margin-top:28px;">
+
+                <!-- BUSINESS HEALTH -->
+
+                <div class="card">
+
+                    <div class="card-title">
+
+                        Business Health
+
+                    </div>
+
+                    <div class="performance-box">
+
+                        <!-- ITEM -->
+
+                        <div class="performance-item" style="margin-bottom:24px;">
+
+                            <div style="
+display:flex;
+justify-content:space-between;
+margin-bottom:10px;
+">
+
+                                <div class="perf-label">
+
+                                    Revenue Growth
+
+                                </div>
+
+                                <div id="revenueGrowth">
+
+                                    0%
+
+                                </div>
+
+                            </div>
+
+                            <div class="perf-progress">
+
+                                <div id="revenueBar" class="perf-fill" style="width:0%;">
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <!-- ITEM -->
+
+                        <div class="performance-item" style="margin-bottom:24px;">
+
+                            <div style="
+display:flex;
+justify-content:space-between;
+margin-bottom:10px;
+">
+
+                                <div class="perf-label">
+
+                                    Customer Engagement
+
+                                </div>
+
+                                <div id="engagementGrowth">
+
+                                    0%
+
+                                </div>
+
+                            </div>
+
+                            <div class="perf-progress">
+
+                                <div id="engagementBar" class="perf-fill blue" style="
+width:0%;
+background:#3b82f6;
+">
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <!-- ITEM -->
+
+                        <div class="performance-item">
+
+                            <div style="
+display:flex;
+justify-content:space-between;
+margin-bottom:10px;
+">
+
+                                <div class="perf-label">
+
+                                    Reward Usage
+
+                                </div>
+
+                                <div id="rewardUsage">
+
+                                    0%
+
+                                </div>
+
+                            </div>
+
+                            <div class="perf-progress">
+
+                                <div id="rewardBar" class="perf-fill orange" style="
+width:0%;
+background:#f59e0b;
+">
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- TOP CUSTOMERS -->
+
+                <div class="card">
+
+                    <div class="card-title">
+
+                        Top Customers
+
+                    </div>
+
+                    <div id="analyticsTopCustomers">
+
+                        <p style="color:var(--muted);">
+
+                            No customer data.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- RECENT TRANSACTIONS -->
+
+            <div class="card" style="margin-top:28px;">
+
+                <div class="card-title">
+
+                    Recent Transactions
+
+                </div>
+
+                <div id="recentTransactions">
+
+                    <p style="color:var(--muted);">
+
+                        No transactions available.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+    <script src="./js/analytics.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Staff Panel — LoyaltyIQ
+    </title>
+
+    <link rel="stylesheet" href="./css/style.css">
+
+    <link rel="stylesheet" href="./css/dashboard.css">
+
+    <link rel="stylesheet" href="./css/responsive.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+
+</head>
+
+<body>
+
+    <div class="dashboard-layout">
+
+        <!-- SIDEBAR -->
+
+        <aside class="sidebar">
+
+            <div class="sidebar-brand">
+
+                <div class="sb-logo">
+
+                    <i class="ti ti-users"></i>
+
+                </div>
+
+                <div>
+
+                    <div class="sb-name">
+                        Staff Panel
+                    </div>
+
+                    <div class="sb-sub">
+                        Billing Management
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="sidebar-nav">
+
+                <a class="snav" href="dashboard.html">
+
+                    <i class="ti ti-layout-dashboard"></i>
+
+                    Dashboard
+
+                </a>
+
+                <a class="snav on" href="staff.html">
+
+                    <i class="ti ti-users"></i>
+
+                    Staff
+
+                </a>
+
+                <a class="snav" href="customer.html">
+
+                    <i class="ti ti-user"></i>
+
+                    Customer
+
+                </a>
+
+                <a class="snav" href="redeem.html">
+
+                    <i class="ti ti-gift"></i>
+
+                    Redeem
+
+                </a>
+
+            </div>
+
+        </aside>
+
+        <!-- MAIN -->
+
+        <main class="dashboard-main">
+
+            <h1 class="page-title">
+                Add Customer Bill
+            </h1>
+
+            <p class="page-sub">
+
+                Add customer purchases &
+                reward points automatically.
+
+            </p>
+
+            <!-- CARD -->
+
+            <div class="card" style="margin-top:30px; max-width:600px;">
+
+                <div class="fgroup">
+
+                    <label class="flabel">
+
+                        Customer Phone Number
+
+                    </label>
+
+                    <input id="customerPhone" type="tel" placeholder="9876543210">
+
+                </div>
+
+                <div class="fgroup">
+
+                    <label class="flabel">
+
+                        Bill Amount
+
+                    </label>
+
+                    <input id="billAmount" type="number" placeholder="500">
+
+                </div>
+
+                <button id="addBillBtn" class="btn-primary">
+
+                    <i class="ti ti-plus"></i>
+
+                    Add Bill
+
+                </button>
+
+            </div>
+
+            <!-- RECENT -->
+
+            <div class="card" style="margin-top:30px;">
+
+                <div class="card-title">
+
+                    Recent Bills
+
+                </div>
+
+                <div id="recentBills">
+
+                    <p style="color:var(--muted);">
+
+                        No bills added yet.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+    <!-- JS -->
+
+    <script src="./js/utils.js"></script>
+
+    <script src="./js/staff.js"></script>
+
+</body>
+
+</html>
