@@ -1,3 +1,11 @@
+/* =========================================
+   REDEEM REWARDS — LOYALTYIQ
+========================================= */
+
+/* =========================================
+   ELEMENTS
+========================================= */
+
 const loadRewardBtn =
     document.getElementById(
         "loadRewardBtn"
@@ -7,6 +15,13 @@ const rewardResult =
     document.getElementById(
         "rewardResult"
     );
+
+/* =========================================
+   STORAGE KEY
+========================================= */
+
+const STORAGE_KEY =
+    "loyaltyiq-bills";
 
 /* =========================================
    LOAD REWARDS
@@ -19,7 +34,9 @@ loadRewardBtn.addEventListener(
         const phone =
             document.getElementById(
                 "redeemPhone"
-            ).value;
+            ).value.trim();
+
+        /* VALIDATION */
 
         if (phone === "") {
 
@@ -29,119 +46,232 @@ loadRewardBtn.addEventListener(
             );
 
             return;
+
         }
+
+        /* GET BILLS */
 
         const bills =
             JSON.parse(
                 localStorage.getItem(
-                    "loyaltyiq-bills"
+                    STORAGE_KEY
                 )
             ) || [];
 
+        /* FILTER CUSTOMER */
+
         const customerBills =
             bills.filter(
-                bill => bill.phone === phone
+                bill =>
+                    bill.phone === phone
             );
+
+        /* NOT FOUND */
 
         if (customerBills.length === 0) {
 
             rewardResult.innerHTML = `
 
-        <div class="card">
+            <div class="empty-state">
 
-            <p style="color:#ef4444;">
+                <div class="empty-icon">
 
-            Customer not found.
+                    <i class="ti ti-user-off"></i>
 
-            </p>
+                </div>
+
+                <h3>
+
+                    Customer Not Found
+
+                </h3>
+
+                <p>
+
+                    No rewards available
+                    for this customer.
+
+                </p>
+
+            </div>
+
+            `;
+
+            showToast(
+                "Customer not found",
+                "error"
+            );
+
+            return;
+
+        }
+
+        /* TOTAL SPENT */
+
+        let totalSpent = 0;
+
+        customerBills.forEach(
+            bill => {
+
+                totalSpent +=
+                    Number(
+                        bill.amount
+                    );
+
+            }
+        );
+
+        /* SETTINGS */
+
+        const settings =
+            JSON.parse(
+                localStorage.getItem(
+                    "loyaltyiq-settings"
+                )
+            ) || {};
+
+        const rewardPercent =
+            Number(
+                settings.rewardPercent || 10
+            );
+
+        /* REWARDS */
+
+        const rewards =
+            Math.floor(
+
+                totalSpent *
+                (rewardPercent / 100)
+
+            );
+
+        /* TOTAL VISITS */
+
+        const totalVisits =
+            customerBills.length;
+
+        /* RENDER */
+
+        rewardResult.innerHTML = `
+
+        <div class="profile-box">
+
+            <!-- TOP -->
+
+            <div class="profile-head">
+
+                <div class="avatar">
+
+                    ${phone.slice(0, 2)}
+
+                </div>
+
+                <div>
+
+                    <div class="profile-phone">
+
+                        ${phone}
+
+                    </div>
+
+                    <div class="badge">
+
+                        Reward Available
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- STATS -->
+
+            <div class="stat-grid">
+
+                <div class="stat-item">
+
+                    <div class="stat-lbl">
+
+                        Total Spent
+
+                    </div>
+
+                    <div class="stat-val">
+
+                        ₹${totalSpent}
+
+                    </div>
+
+                </div>
+
+                <div class="stat-item">
+
+                    <div class="stat-lbl">
+
+                        Visits
+
+                    </div>
+
+                    <div class="stat-val">
+
+                        ${totalVisits}
+
+                    </div>
+
+                </div>
+
+                <div class="stat-item">
+
+                    <div class="stat-lbl">
+
+                        Reward %
+
+                    </div>
+
+                    <div class="stat-val">
+
+                        ${rewardPercent}%
+
+                    </div>
+
+                </div>
+
+                <div class="stat-item">
+
+                    <div class="stat-lbl">
+
+                        Redeemable
+
+                    </div>
+
+                    <div class="stat-val">
+
+                        ₹${rewards}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- BUTTON -->
+
+            <button
+            id="redeemBtn"
+            class="btn-primary"
+            style="margin-top:24px;width:100%;">
+
+                <i class="ti ti-gift"></i>
+
+                Redeem ₹${rewards}
+
+            </button>
 
         </div>
 
         `;
 
-            return;
-        }
-
-        let totalSpent = 0;
-
-        customerBills.forEach(bill => {
-
-            totalSpent +=
-                Number(bill.amount);
-
-        });
-
-        const rewards =
-            Math.floor(totalSpent * 0.1);
-
-        rewardResult.innerHTML = `
-
-    <div class="profile-box">
-
-        <div class="profile-head">
-
-            <div class="avatar">
-
-                ${phone.slice(0, 2)}
-
-            </div>
-
-            <div>
-
-                <div class="pname">
-
-                    Customer Rewards
-
-                </div>
-
-                <div class="badge">
-
-                    Redeem Available
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="stat-grid">
-
-            <div class="stat-item">
-
-                <div class="stat-lbl">
-
-                    Total Rewards
-
-                </div>
-
-                <div class="stat-val">
-
-                    ₹${rewards}
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <button
-        id="redeemBtn"
-        class="btn-primary"
-        style="margin-top:24px;">
-
-            <i class="ti ti-check"></i>
-
-            Redeem ₹${rewards}
-
-        </button>
-
-    </div>
-
-    `;
-
-        /* =========================
-           REDEEM BUTTON
-        ========================= */
+        /* BUTTON */
 
         const redeemBtn =
             document.getElementById(
@@ -152,40 +282,16 @@ loadRewardBtn.addEventListener(
             "click",
             () => {
 
-                rewardResult.innerHTML = `
-
-        <div class="card">
-
-            <h2 style="
-            color:#10b981;
-            margin-bottom:12px;
-            ">
-
-            Reward Redeemed Successfully 🎉
-
-            </h2>
-
-            <p style="
-            color:var(--muted);
-            ">
-
-            ₹${rewards} reward redeemed
-            for customer ${phone}
-
-            </p>
-
-        </div>
-
-        `;
-
                 showToast(
-                    "Reward redeemed",
+                    `₹${rewards} redeemed successfully`,
                     "success"
                 );
 
-            });
+            }
+        );
 
-    });
+    }
+);
 
 /* =========================================
    TOAST

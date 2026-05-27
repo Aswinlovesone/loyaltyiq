@@ -11,13 +11,26 @@
         Customer Rewards — LoyaltyIQ
     </title>
 
+    <!-- GOOGLE FONT -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- TABLER ICONS -->
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+
+    <!-- CSS -->
+
     <link rel="stylesheet" href="./css/style.css">
 
     <link rel="stylesheet" href="./css/dashboard.css">
 
     <link rel="stylesheet" href="./css/responsive.css">
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 
 </head>
 
@@ -25,9 +38,13 @@
 
     <div class="dashboard-layout">
 
-        <!-- SIDEBAR -->
+        <!-- =====================================
+             SIDEBAR
+        ====================================== -->
 
         <aside class="sidebar">
+
+            <!-- BRAND -->
 
             <div class="sidebar-brand">
 
@@ -40,16 +57,22 @@
                 <div>
 
                     <div class="sb-name">
-                        Customer
+
+                        LoyaltyIQ
+
                     </div>
 
                     <div class="sb-sub">
-                        Rewards Profile
+
+                        Customer Rewards
+
                     </div>
 
                 </div>
 
             </div>
+
+            <!-- NAVIGATION -->
 
             <div class="sidebar-nav">
 
@@ -85,43 +108,104 @@
 
                 </a>
 
+                <a class="snav" href="analytics.html">
+
+                    <i class="ti ti-chart-bar"></i>
+
+                    Analytics
+
+                </a>
+
+                <a class="snav" href="settings.html">
+
+                    <i class="ti ti-settings"></i>
+
+                    Settings
+
+                </a>
+
+            </div>
+
+            <!-- SIDEBAR CARD -->
+
+            <div class="sidebar-footer-card" style="
+                margin-top:40px;
+                padding:24px;
+                border-radius:28px;
+                background:rgba(255,255,255,0.05);
+                border:1px solid rgba(255,255,255,0.08);
+                ">
+
+                <div style="
+                    color:var(--muted);
+                    font-size:13px;
+                    margin-bottom:12px;
+                ">
+
+                    Loyalty Members
+
+                </div>
+
+                <div style="
+                    font-size:36px;
+                    font-weight:800;
+                    line-height:1;
+                ">
+
+                    1,240
+
+                </div>
+
+                <div style="
+                    margin-top:12px;
+                    color:var(--muted);
+                    font-size:13px;
+                ">
+
+                    Active reward customers
+
+                </div>
+
             </div>
 
         </aside>
 
-        <!-- MAIN -->
+        <!-- =====================================
+             MAIN
+        ====================================== -->
 
         <main class="dashboard-main">
 
-            <h1 class="page-title">
+            <!-- TOPBAR -->
 
-                Customer Rewards
+            <div class="topbar">
 
-            </h1>
+                <div>
 
-            <p class="page-sub">
+                    <h1 class="page-title">
 
-                Search customer rewards &
-                loyalty history instantly.
+                        Customer Rewards
 
-            </p>
+                    </h1>
 
-            <!-- SEARCH -->
+                    <p class="page-sub">
 
-            <div class="card" style="margin-top:30px; max-width:700px;">
+                        Search customer rewards,
+                        loyalty activity and visit history instantly.
 
-                <div class="input-row" style="
-display:flex;
-gap:14px;
-">
+                    </p>
 
-                    <input id="searchPhone" type="tel" placeholder="Enter Phone Number">
+                </div>
 
-                    <button id="searchBtn" class="btn-primary">
+                <!-- ACTION -->
 
-                        <i class="ti ti-search"></i>
+                <div class="topbar-actions">
 
-                        Search
+                    <button class="btn-secondary">
+
+                        <i class="ti ti-users-group"></i>
+
+                        Customer Insights
 
                     </button>
 
@@ -129,17 +213,330 @@ gap:14px;
 
             </div>
 
-            <!-- RESULT -->
+            <!-- =====================================
+                 SEARCH + INSIGHTS
+            ====================================== -->
+
+            <div class="cards-grid" style="margin-top:30px;">
+
+                <!-- SEARCH -->
+
+                <div class="card customer-search-card">
+
+                    <div class="card-head">
+
+                        <div style="
+                            display:flex;
+                            align-items:center;
+                            gap:18px;
+                        ">
+
+                            <div class="mcard-icon b">
+
+                                <i class="ti ti-search"></i>
+
+                            </div>
+
+                            <div>
+
+                                <div class="card-title">
+
+                                    Search Customer
+
+                                </div>
+
+                                <p class="card-sub">
+
+                                    Enter customer phone number
+                                    to view loyalty rewards.
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- INPUT -->
+
+                    <div class="fgroup" style="margin-top:20px;">
+
+                        <label class="flabel">
+
+                            Phone Number
+
+                        </label>
+
+                        <div class="input-wrap">
+
+                            <i class="ti ti-phone"></i>
+
+                            <input id="searchPhone" type="tel" placeholder="Enter customer number">
+
+                        </div>
+
+                    </div>
+
+                    <!-- BUTTON -->
+
+                    <button id="searchBtn" class="btn-primary full-btn">
+
+                        <i class="ti ti-search"></i>
+
+                        Search Rewards
+
+                    </button>
+
+                </div>
+
+                <!-- INSIGHTS -->
+
+                <div class="card preview-card">
+
+                    <div class="card-head">
+
+                        <div style="
+                            display:flex;
+                            align-items:center;
+                            gap:18px;
+                        ">
+
+                            <div class="mcard-icon g">
+
+                                <i class="ti ti-chart-bar"></i>
+
+                            </div>
+
+                            <div>
+
+                                <div class="card-title">
+
+                                    Loyalty Insights
+
+                                </div>
+
+                                <p class="card-sub">
+
+                                    Customer engagement overview.
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- STATS -->
+
+                    <div class="stat-grid" style="margin-top:22px;">
+
+                        <div class="stat-item">
+
+                            <div class="stat-lbl">
+
+                                Total Members
+
+                            </div>
+
+                            <div class="stat-val">
+
+                                1,240
+
+                            </div>
+
+                        </div>
+
+                        <div class="stat-item">
+
+                            <div class="stat-lbl">
+
+                                Repeat Customers
+
+                            </div>
+
+                            <div class="stat-val">
+
+                                68%
+
+                            </div>
+
+                        </div>
+
+                        <div class="stat-item">
+
+                            <div class="stat-lbl">
+
+                                Rewards Issued
+
+                            </div>
+
+                            <div class="stat-val">
+
+                                ₹42K
+
+                            </div>
+
+                        </div>
+
+                        <div class="stat-item">
+
+                            <div class="stat-lbl">
+
+                                Loyalty Growth
+
+                            </div>
+
+                            <div class="stat-val">
+
+                                +24%
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- =====================================
+                 RESULT
+            ====================================== -->
 
             <div id="customerResult" style="margin-top:30px;">
 
                 <div class="card">
 
-                    <p style="color:var(--muted);">
+                    <div class="empty-state">
 
-                        Search customer to view rewards.
+                        <div class="empty-icon">
 
-                    </p>
+                            <i class="ti ti-user-search"></i>
+
+                        </div>
+
+                        <h3>
+
+                            Search Customer Rewards
+
+                        </h3>
+
+                        <p>
+
+                            Customer rewards,
+                            visits and loyalty activity
+                            will appear here.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- =====================================
+                 QUICK METRICS
+            ====================================== -->
+
+            <div class="metrics-row" style="margin-top:30px;">
+
+                <!-- CARD -->
+
+                <div class="mcard">
+
+                    <div class="mcard-icon g">
+
+                        <i class="ti ti-users"></i>
+
+                    </div>
+
+                    <div class="mcard-val">
+
+                        1240
+
+                    </div>
+
+                    <div class="mcard-lbl">
+
+                        Members
+
+                    </div>
+
+                </div>
+
+                <!-- CARD -->
+
+                <div class="mcard">
+
+                    <div class="mcard-icon b">
+
+                        <i class="ti ti-repeat"></i>
+
+                    </div>
+
+                    <div class="mcard-val">
+
+                        68%
+
+                    </div>
+
+                    <div class="mcard-lbl">
+
+                        Retention
+
+                    </div>
+
+                </div>
+
+                <!-- CARD -->
+
+                <div class="mcard">
+
+                    <div class="mcard-icon a">
+
+                        <i class="ti ti-gift"></i>
+
+                    </div>
+
+                    <div class="mcard-val">
+
+                        ₹42K
+
+                    </div>
+
+                    <div class="mcard-lbl">
+
+                        Rewards Issued
+
+                    </div>
+
+                </div>
+
+                <!-- CARD -->
+
+                <div class="mcard">
+
+                    <div class="mcard-icon p">
+
+                        <i class="ti ti-chart-line"></i>
+
+                    </div>
+
+                    <div class="mcard-val">
+
+                        +24%
+
+                    </div>
+
+                    <div class="mcard-lbl">
+
+                        Growth
+
+                    </div>
 
                 </div>
 
@@ -148,6 +545,8 @@ gap:14px;
         </main>
 
     </div>
+
+    <!-- JS -->
 
     <script src="./js/customer.js"></script>
 

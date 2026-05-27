@@ -11,13 +11,26 @@
         Redeem Rewards — LoyaltyIQ
     </title>
 
+    <!-- GOOGLE FONTS -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- TABLER ICONS -->
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+
+    <!-- CSS -->
+
     <link rel="stylesheet" href="./css/style.css">
 
     <link rel="stylesheet" href="./css/dashboard.css">
 
     <link rel="stylesheet" href="./css/responsive.css">
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 
 </head>
 
@@ -28,6 +41,8 @@
         <!-- SIDEBAR -->
 
         <aside class="sidebar">
+
+            <!-- BRAND -->
 
             <div class="sidebar-brand">
 
@@ -40,16 +55,22 @@
                 <div>
 
                     <div class="sb-name">
-                        Redeem
+
+                        LoyaltyIQ
+
                     </div>
 
                     <div class="sb-sub">
-                        Reward Redemption
+
+                        Rewards Platform
+
                     </div>
 
                 </div>
 
             </div>
+
+            <!-- NAVIGATION -->
 
             <div class="sidebar-nav">
 
@@ -85,6 +106,22 @@
 
                 </a>
 
+                <a class="snav" href="analytics.html">
+
+                    <i class="ti ti-chart-bar"></i>
+
+                    Analytics
+
+                </a>
+
+                <a class="snav" href="settings.html">
+
+                    <i class="ti ti-settings"></i>
+
+                    Settings
+
+                </a>
+
             </div>
 
         </aside>
@@ -93,55 +130,229 @@
 
         <main class="dashboard-main">
 
-            <h1 class="page-title">
+            <!-- TOPBAR -->
 
-                Redeem Rewards
+            <div class="topbar">
 
-            </h1>
+                <div>
 
-            <p class="page-sub">
+                    <h1 class="page-title">
 
-                Redeem customer loyalty rewards instantly.
+                        Redeem Rewards
 
-            </p>
+                    </h1>
 
-            <!-- SEARCH -->
+                    <p class="page-sub">
 
-            <div class="card" style="margin-top:30px; max-width:700px;">
+                        Instantly check and redeem
+                        customer loyalty rewards.
 
-                <div class="fgroup">
-
-                    <label class="flabel">
-
-                        Customer Phone Number
-
-                    </label>
-
-                    <input id="redeemPhone" type="tel" placeholder="9876543210">
+                    </p>
 
                 </div>
 
-                <button id="loadRewardBtn" class="btn-primary">
+                <div class="topbar-actions">
 
-                    <i class="ti ti-search"></i>
+                    <button class="btn-secondary">
 
-                    Load Rewards
+                        <i class="ti ti-history"></i>
 
-                </button>
+                        Redeem History
+
+                    </button>
+
+                </div>
 
             </div>
 
-            <!-- RESULT -->
+            <!-- REDEEM SECTION -->
 
-            <div id="rewardResult" style="margin-top:30px;">
+            <div class="redeem-layout">
 
-                <div class="card">
+                <!-- LEFT -->
 
-                    <p style="color:var(--muted);">
+                <div class="card redeem-card">
 
-                        Search customer to redeem rewards.
+                    <div class="card-title">
+
+                        Customer Lookup
+
+                    </div>
+
+                    <p class="card-sub">
+
+                        Search customer using phone number.
 
                     </p>
+
+                    <!-- INPUT -->
+
+                    <div class="fgroup">
+
+                        <label class="flabel">
+
+                            Phone Number
+
+                        </label>
+
+                        <div class="input-wrap">
+
+                            <i class="ti ti-phone"></i>
+
+                            <input id="redeemPhone" type="tel" placeholder="Enter customer number">
+
+                        </div>
+
+                    </div>
+
+                    <!-- BUTTON -->
+
+                    <button id="loadRewardBtn" class="btn-primary full-btn">
+
+                        <i class="ti ti-search"></i>
+
+                        Load Rewards
+
+                    </button>
+
+                </div>
+
+                <!-- RIGHT -->
+
+                <div class="card reward-preview">
+
+                    <div class="reward-top">
+
+                        <div class="reward-icon">
+
+                            <i class="ti ti-gift"></i>
+
+                        </div>
+
+                        <div>
+
+                            <div class="reward-title">
+
+                                Loyalty Rewards
+
+                            </div>
+
+                            <div class="reward-sub">
+
+                                Smart customer redemption
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- RESULT -->
+
+                    <div id="rewardResult" class="reward-result">
+
+                        <div class="empty-state">
+
+                            <div class="empty-icon">
+
+                                <i class="ti ti-search"></i>
+
+                            </div>
+
+                            <h3>
+
+                                No Customer Selected
+
+                            </h3>
+
+                            <p>
+
+                                Search a customer phone number
+                                to view available rewards.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- QUICK STATS -->
+
+            <div class="metrics-row" style="margin-top:30px;">
+
+                <!-- CARD -->
+
+                <div class="mcard">
+
+                    <div class="mcard-icon g">
+
+                        <i class="ti ti-gift"></i>
+
+                    </div>
+
+                    <div class="mcard-val">
+
+                        ₹24,500
+
+                    </div>
+
+                    <div class="mcard-lbl">
+
+                        Rewards Redeemed
+
+                    </div>
+
+                </div>
+
+                <!-- CARD -->
+
+                <div class="mcard">
+
+                    <div class="mcard-icon b">
+
+                        <i class="ti ti-users"></i>
+
+                    </div>
+
+                    <div class="mcard-val">
+
+                        1,240
+
+                    </div>
+
+                    <div class="mcard-lbl">
+
+                        Happy Customers
+
+                    </div>
+
+                </div>
+
+                <!-- CARD -->
+
+                <div class="mcard">
+
+                    <div class="mcard-icon p">
+
+                        <i class="ti ti-repeat"></i>
+
+                    </div>
+
+                    <div class="mcard-val">
+
+                        68%
+
+                    </div>
+
+                    <div class="mcard-lbl">
+
+                        Retention Rate
+
+                    </div>
 
                 </div>
 
@@ -150,6 +361,8 @@
         </main>
 
     </div>
+
+    <!-- JS -->
 
     <script src="./js/redeem.js"></script>
 

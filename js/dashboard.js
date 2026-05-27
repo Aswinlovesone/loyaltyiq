@@ -1,24 +1,58 @@
 /* =========================================
-   LOAD DASHBOARD DATA
+   DASHBOARD — LOYALTYIQ
+========================================= */
+
+/* =========================================
+   STORAGE
+========================================= */
+
+const STORAGE_KEY = "loyaltyiq-bills";
+
+/* =========================================
+   LOAD DASHBOARD
 ========================================= */
 
 window.addEventListener(
     "DOMContentLoaded",
-    loadDashboard
+    () => {
+
+        loadDashboard();
+
+    }
 );
 
+/* =========================================
+   MAIN DASHBOARD
+========================================= */
+
 function loadDashboard() {
+
+    /* GET BILLS */
 
     const bills =
         JSON.parse(
             localStorage.getItem(
-                "loyaltyiq-bills"
+                STORAGE_KEY
             )
         ) || [];
 
-    /* =========================
-       TOTAL CUSTOMERS
-    ========================= */
+    /* SETTINGS */
+
+    const settings =
+        JSON.parse(
+            localStorage.getItem(
+                "loyaltyiq-settings"
+            )
+        ) || {};
+
+    const rewardPercent =
+        Number(
+            settings.rewardPercent || 10
+        );
+
+    /* =====================================
+       CALCULATIONS
+    ===================================== */
 
     const uniqueCustomers =
         [...new Set(
@@ -30,111 +64,105 @@ function loadDashboard() {
     const totalCustomers =
         uniqueCustomers.length;
 
-    /* =========================
-       TOTAL REVENUE
-    ========================= */
-
     let totalRevenue = 0;
 
-    bills.forEach(bill => {
+    let totalRewards = 0;
 
-        totalRevenue +=
-            Number(bill.amount);
+    bills.forEach(
+        bill => {
 
-    });
+            totalRevenue +=
+                Number(
+                    bill.amount
+                );
 
-    /* =========================
-       REWARDS
-    ========================= */
+            totalRewards +=
+                Math.floor(
 
-    const totalRewards =
-        Math.floor(
-            totalRevenue * 0.1
-        );
+                    Number(bill.amount) *
+                    (rewardPercent / 100)
 
-    /* =========================
+                );
+
+        }
+    );
+
+    /* =====================================
        RETENTION
-    ========================= */
+    ===================================== */
 
     let repeatCustomers = 0;
 
-    uniqueCustomers.forEach(phone => {
+    uniqueCustomers.forEach(
+        phone => {
 
-        const visits =
-            bills.filter(
-                bill => bill.phone === phone
-            );
+            const visits =
+                bills.filter(
+                    bill =>
+                        bill.phone === phone
+                );
 
-        if (visits.length > 1) {
+            if (visits.length > 1) {
 
-            repeatCustomers++;
+                repeatCustomers++;
+
+            }
 
         }
-
-    });
+    );
 
     const retention =
         totalCustomers === 0
             ? 0
             : Math.floor(
-                (repeatCustomers / totalCustomers)
-                * 100
+
+                (repeatCustomers /
+                    totalCustomers) * 100
+
             );
 
-    /* =========================
+    /* =====================================
        UPDATE UI
-    ========================= */
+    ===================================== */
 
-    updateMetric(
-        0,
-        totalCustomers
-    );
+    document.getElementById(
+        "customerCount"
+    ).innerText =
+        totalCustomers;
 
-    updateMetric(
-        1,
-        `₹${totalRevenue}`
-    );
+    document.getElementById(
+        "revenueCount"
+    ).innerText =
+        `₹${totalRevenue.toLocaleString()}`;
 
-    updateMetric(
-        2,
-        `₹${totalRewards}`
-    );
+    document.getElementById(
+        "rewardCount"
+    ).innerText =
+        `₹${totalRewards.toLocaleString()}`;
 
-    updateMetric(
-        3,
-        `${retention}%`
-    );
+    document.getElementById(
+        "retentionCount"
+    ).innerText =
+        `${retention}%`;
+
+    document.getElementById(
+        "todayRevenue"
+    ).innerText =
+        `₹${totalRevenue.toLocaleString()}`;
+
+    /* =====================================
+       LOAD SECTIONS
+    ===================================== */
 
     loadTopCustomers(
-        bills
+        bills,
+        rewardPercent
     );
 
     loadRecentActivity(
-        bills
+        bills,
+        rewardPercent
     );
-
-}
-
-/* =========================================
-   UPDATE METRICS
-========================================= */
-
-function updateMetric(
-    index,
-    value
-) {
-
-    const metrics =
-        document.querySelectorAll(
-            ".mcard-val"
-        );
-
-    if (metrics[index]) {
-
-        metrics[index].innerText =
-            value;
-
-    }
 
 }
 
@@ -143,63 +171,127 @@ function updateMetric(
 ========================================= */
 
 function loadTopCustomers(
-    bills
+    bills,
+    rewardPercent
 ) {
 
     const table =
         document.querySelector(
-            "table"
+            "#topCustomersTable tbody"
         );
 
-    if (!table) return;
+    /* EMPTY */
 
-    const customerTotals = {};
+    if (bills.length === 0) {
 
-    bills.forEach(bill => {
-
-        if (!customerTotals[bill.phone]) {
-
-            customerTotals[bill.phone] = 0;
-
-        }
-
-        customerTotals[bill.phone] +=
-            Number(bill.amount);
-
-    });
-
-    const sorted =
-        Object.entries(customerTotals)
-            .sort((a, b) => b[1] - a[1])
-            .slice(0, 5);
-
-    table.innerHTML = `
-
-    <tr>
-
-        <th>Phone</th>
-
-        <th>Spend</th>
-
-    </tr>
-
-    `;
-
-    sorted.forEach(customer => {
-
-        table.innerHTML += `
+        table.innerHTML = `
 
         <tr>
 
-            <td>${customer[0]}</td>
+            <td
+            colspan="3"
+            style="
+            text-align:center;
+            padding:30px;
+            color:var(--muted);
+            ">
 
-            <td>₹${customer[1]}</td>
+                No customer data available
+
+            </td>
 
         </tr>
 
         `;
 
-    });
+        return;
+
+    }
+
+    /* TOTALS */
+
+    const customerTotals = {};
+
+    bills.forEach(
+        bill => {
+
+            if (!customerTotals[bill.phone]) {
+
+                customerTotals[bill.phone] = {
+
+                    spend: 0,
+                    rewards: 0
+
+                };
+
+            }
+
+            customerTotals[bill.phone].spend +=
+                Number(
+                    bill.amount
+                );
+
+            customerTotals[bill.phone].rewards +=
+                Math.floor(
+
+                    Number(bill.amount) *
+                    (rewardPercent / 100)
+
+                );
+
+        }
+    );
+
+    /* SORT */
+
+    const sortedCustomers =
+        Object.entries(
+            customerTotals
+        )
+
+            .sort(
+                (a, b) =>
+                    b[1].spend -
+                    a[1].spend
+            )
+
+            .slice(0, 5);
+
+    /* RENDER */
+
+    table.innerHTML = "";
+
+    sortedCustomers.forEach(
+        customer => {
+
+            table.innerHTML += `
+
+            <tr>
+
+                <td>
+
+                    ${customer[0]}
+
+                </td>
+
+                <td>
+
+                    ₹${customer[1].spend.toLocaleString()}
+
+                </td>
+
+                <td>
+
+                    ₹${customer[1].rewards.toLocaleString()}
+
+                </td>
+
+            </tr>
+
+            `;
+
+        }
+    );
 
 }
 
@@ -208,93 +300,135 @@ function loadTopCustomers(
 ========================================= */
 
 function loadRecentActivity(
-    bills
+    bills,
+    rewardPercent
 ) {
 
-    const activityCard =
-        document.querySelectorAll(
-            ".card"
-        )[1];
+    const container =
+        document.getElementById(
+            "recentActivity"
+        );
 
-    if (!activityCard) return;
+    /* EMPTY */
 
-    const latest =
-        bills.slice(-5).reverse();
+    if (bills.length === 0) {
 
-    activityCard.innerHTML = `
+        container.innerHTML = `
 
-    <div class="card-title">
+        <div class="empty-state">
 
-        Recent Activity
+            <div class="empty-icon">
 
-    </div>
-
-    `;
-
-    if (latest.length === 0) {
-
-        activityCard.innerHTML += `
-
-        <p style="color:var(--muted);">
-
-        No recent activity.
-
-        </p>
-
-        `;
-
-        return;
-    }
-
-    latest.forEach(bill => {
-
-        activityCard.innerHTML += `
-
-        <div
-        class="activity-item"
-        style="
-        padding:16px;
-        border-radius:18px;
-        background:rgba(255,255,255,0.04);
-        margin-bottom:14px;
-        border:1px solid rgba(255,255,255,0.06);
-        ">
-
-            <div
-            style="
-            display:flex;
-            justify-content:space-between;
-            margin-bottom:8px;
-            ">
-
-                <strong>
-
-                ${bill.phone}
-
-                </strong>
-
-                <strong>
-
-                ₹${bill.amount}
-
-                </strong>
+                <i class="ti ti-activity"></i>
 
             </div>
 
-            <small
-            style="
-            color:var(--muted);
-            ">
+            <h3>
 
-            ${bill.date}
+                No Recent Activity
 
-            </small>
+            </h3>
+
+            <p>
+
+                Customer activity
+                will appear here.
+
+            </p>
 
         </div>
 
         `;
 
-    });
+        return;
+
+    }
+
+    /* SORT */
+
+    const latestBills =
+        [...bills]
+
+            .sort(
+                (a, b) =>
+                    b.createdAt -
+                    a.createdAt
+            )
+
+            .slice(0, 6);
+
+    /* RENDER */
+
+    container.innerHTML = "";
+
+    latestBills.forEach(
+        bill => {
+
+            const reward =
+                Math.floor(
+
+                    Number(bill.amount) *
+                    (rewardPercent / 100)
+
+                );
+
+            container.innerHTML += `
+
+            <div class="activity-item">
+
+                <div class="activity-left">
+
+                    <div class="activity-avatar">
+
+                        ${bill.phone.slice(0, 2)}
+
+                    </div>
+
+                    <div>
+
+                        <div class="activity-name">
+
+                            ${bill.phone}
+
+                        </div>
+
+                        <div class="activity-time">
+
+                            ${bill.date}
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div
+                style="
+                text-align:right;
+                ">
+
+                    <div class="activity-right">
+
+                        ₹${Number(
+                bill.amount
+            ).toLocaleString()}
+
+                    </div>
+
+                    <div class="activity-time">
+
+                        Reward ₹${reward}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            `;
+
+        }
+    );
 
 }
 
@@ -321,106 +455,44 @@ function exportReport() {
     const bills =
         JSON.parse(
             localStorage.getItem(
-                "loyaltyiq-bills"
+                STORAGE_KEY
             )
         ) || [];
 
-    /* =========================
-       CALCULATIONS
-    ========================= */
+    if (bills.length === 0) {
 
-    const uniqueCustomers =
-        [...new Set(
-            bills.map(
-                bill => bill.phone
-            )
-        )];
+        showToast(
+            "No data to export",
+            "error"
+        );
 
-    let revenue = 0;
+        return;
 
-    bills.forEach(bill => {
+    }
 
-        revenue +=
-            Number(bill.amount);
+    let report =
 
-    });
+        `LOYALTYIQ REPORT
 
-    const rewards =
-        Math.floor(revenue * 0.1);
-
-    let repeatCustomers = 0;
-
-    uniqueCustomers.forEach(phone => {
-
-        const visits =
-            bills.filter(
-                bill => bill.phone === phone
-            );
-
-        if (visits.length > 1) {
-
-            repeatCustomers++;
-
-        }
-
-    });
-
-    const retention =
-        uniqueCustomers.length === 0
-            ? 0
-            : Math.floor(
-                (repeatCustomers /
-                    uniqueCustomers.length)
-                * 100
-            );
-
-    /* =========================
-       REPORT CONTENT
-    ========================= */
-
-    let report = `
-
-======================================
-        LOYALTYIQ REPORT
-======================================
-
-Total Customers :
-${uniqueCustomers.length}
-
-Total Revenue :
-₹${revenue}
-
-Total Rewards :
-₹${rewards}
-
-Retention Rate :
-${retention}%
-
-======================================
-          RECENT BILLS
-======================================
+==============================
 
 `;
 
-    bills.forEach(bill => {
+    bills.forEach(
+        bill => {
 
-        report += `
+            report +=
 
-Phone : ${bill.phone}
-
+                `Phone : ${bill.phone}
 Amount : ₹${bill.amount}
-
 Date : ${bill.date}
 
---------------------------------------
+--------------------------
 
 `;
 
-    });
-
-    /* =========================
-       DOWNLOAD
-    ========================= */
+        }
+    );
 
     const blob =
         new Blob(
@@ -430,24 +502,51 @@ Date : ${bill.date}
             }
         );
 
-    const url =
-        URL.createObjectURL(blob);
+    const link =
+        document.createElement(
+            "a"
+        );
 
-    const a =
-        document.createElement("a");
+    link.href =
+        URL.createObjectURL(
+            blob
+        );
 
-    a.href = url;
+    link.download =
+        "loyaltyiq-report.txt";
 
-    a.download =
-        "LoyaltyIQ-Report.txt";
-
-    a.click();
-
-    URL.revokeObjectURL(url);
+    link.click();
 
     showToast(
         "Report exported successfully",
         "success"
+    );
+
+}
+
+/* =========================================
+   REFRESH
+========================================= */
+
+const refreshBtn =
+    document.getElementById(
+        "refreshBtn"
+    );
+
+if (refreshBtn) {
+
+    refreshBtn.addEventListener(
+        "click",
+        () => {
+
+            loadDashboard();
+
+            showToast(
+                "Dashboard refreshed",
+                "success"
+            );
+
+        }
     );
 
 }
@@ -493,13 +592,13 @@ function showToast(
         "white";
 
     toast.style.fontWeight =
-        "600";
+        "700";
 
     toast.style.zIndex =
         "9999";
 
     toast.style.boxShadow =
-        "0 20px 40px rgba(0,0,0,0.3)";
+        "0 20px 40px rgba(0,0,0,0.35)";
 
     document.body.appendChild(
         toast

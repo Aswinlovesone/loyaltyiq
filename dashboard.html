@@ -11,13 +11,26 @@
         Dashboard — LoyaltyIQ
     </title>
 
+    <!-- GOOGLE FONTS -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- TABLER ICONS -->
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+
+    <!-- CSS -->
+
     <link rel="stylesheet" href="./css/style.css">
 
     <link rel="stylesheet" href="./css/dashboard.css">
 
     <link rel="stylesheet" href="./css/responsive.css">
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 
 </head>
 
@@ -25,11 +38,13 @@
 
     <div class="dashboard-layout">
 
-        <!-- ======================================
-     SIDEBAR
-====================================== -->
+        <!-- =====================================
+             SIDEBAR
+        ====================================== -->
 
         <aside class="sidebar">
+
+            <!-- BRAND -->
 
             <div class="sidebar-brand">
 
@@ -49,7 +64,7 @@
 
                     <div class="sb-sub">
 
-                        Owner Dashboard
+                        AI Business Dashboard
 
                     </div>
 
@@ -57,7 +72,7 @@
 
             </div>
 
-            <!-- NAV -->
+            <!-- NAVIGATION -->
 
             <div class="sidebar-nav">
 
@@ -111,38 +126,43 @@
 
             </div>
 
-            <!-- SIDEBAR FOOTER -->
+            <!-- SIDEBAR CARD -->
 
-            <div style="
-margin-top:auto;
-padding-top:40px;
-">
+            <div class="sidebar-footer-card" style="
+                margin-top:40px;
+                padding:24px;
+                border-radius:28px;
+                background:rgba(255,255,255,0.05);
+                border:1px solid rgba(255,255,255,0.08);
+                ">
 
                 <div style="
-padding:22px;
-border-radius:24px;
-background:rgba(255,255,255,0.04);
-border:1px solid rgba(255,255,255,0.06);
-">
+                    color:var(--muted);
+                    font-size:13px;
+                    margin-bottom:12px;
+                ">
 
-                    <div style="
-font-size:14px;
-color:var(--muted);
-margin-bottom:10px;
-">
+                    Today's Revenue
 
-                        Today's Revenue
+                </div>
 
-                    </div>
+                <div id="todayRevenue" style="
+                    font-size:36px;
+                    font-weight:800;
+                    line-height:1;
+                ">
 
-                    <div id="todayRevenue" style="
-font-size:32px;
-font-weight:800;
-">
+                    ₹0
 
-                        ₹0
+                </div>
 
-                    </div>
+                <div style="
+                    margin-top:12px;
+                    color:var(--muted);
+                    font-size:13px;
+                ">
+
+                    Real-time business growth
 
                 </div>
 
@@ -150,9 +170,9 @@ font-weight:800;
 
         </aside>
 
-        <!-- ======================================
-     MAIN
-====================================== -->
+        <!-- =====================================
+             MAIN
+        ====================================== -->
 
         <main class="dashboard-main">
 
@@ -170,19 +190,18 @@ font-weight:800;
 
                     <p class="page-sub">
 
-                        Real-time loyalty analytics dashboard
+                        Smart loyalty analytics,
+                        revenue tracking and customer insights.
 
                     </p>
 
                 </div>
 
-                <div style="
-display:flex;
-gap:14px;
-flex-wrap:wrap;
-">
+                <!-- ACTIONS -->
 
-                    <button id="refreshBtn" class="btn-primary">
+                <div class="topbar-actions">
+
+                    <button id="refreshBtn" class="btn-secondary">
 
                         <i class="ti ti-refresh"></i>
 
@@ -202,9 +221,9 @@ flex-wrap:wrap;
 
             </div>
 
-            <!-- ======================================
-     METRICS
-====================================== -->
+            <!-- =====================================
+                 METRICS
+            ====================================== -->
 
             <div class="metrics-row">
 
@@ -218,7 +237,7 @@ flex-wrap:wrap;
 
                     </div>
 
-                    <div class="mcard-val">
+                    <div id="customerCount" class="mcard-val">
 
                         0
 
@@ -226,7 +245,7 @@ flex-wrap:wrap;
 
                     <div class="mcard-lbl">
 
-                        Customers
+                        Total Customers
 
                     </div>
 
@@ -242,7 +261,7 @@ flex-wrap:wrap;
 
                     </div>
 
-                    <div class="mcard-val">
+                    <div id="revenueCount" class="mcard-val">
 
                         ₹0
 
@@ -250,7 +269,7 @@ flex-wrap:wrap;
 
                     <div class="mcard-lbl">
 
-                        Revenue
+                        Total Revenue
 
                     </div>
 
@@ -266,7 +285,7 @@ flex-wrap:wrap;
 
                     </div>
 
-                    <div class="mcard-val">
+                    <div id="rewardCount" class="mcard-val">
 
                         ₹0
 
@@ -274,7 +293,7 @@ flex-wrap:wrap;
 
                     <div class="mcard-lbl">
 
-                        Rewards
+                        Rewards Issued
 
                     </div>
 
@@ -290,7 +309,7 @@ flex-wrap:wrap;
 
                     </div>
 
-                    <div class="mcard-val">
+                    <div id="retentionCount" class="mcard-val">
 
                         0%
 
@@ -298,7 +317,7 @@ flex-wrap:wrap;
 
                     <div class="mcard-lbl">
 
-                        Retention
+                        Customer Retention
 
                     </div>
 
@@ -306,9 +325,9 @@ flex-wrap:wrap;
 
             </div>
 
-            <!-- ======================================
-     CHARTS GRID
-====================================== -->
+            <!-- =====================================
+                 FIRST GRID
+            ====================================== -->
 
             <div class="cards-grid">
 
@@ -316,16 +335,22 @@ flex-wrap:wrap;
 
                 <div class="card">
 
-                    <div class="card-top" style="
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:24px;
-">
+                    <div class="card-head">
 
-                        <div class="card-title">
+                        <div>
 
-                            Top Customers
+                            <div class="card-title">
+
+                                Top Customers
+
+                            </div>
+
+                            <p class="card-sub">
+
+                                Highest spending customers
+                                based on purchases.
+
+                            </p>
 
                         </div>
 
@@ -337,52 +362,115 @@ margin-bottom:24px;
 
                     </div>
 
-                    <table id="topCustomersTable">
+                    <!-- TABLE -->
 
-                        <tr>
+                    <div class="table-wrap" style="margin-top:12px;">
 
-                            <th>Phone</th>
+                        <table id="topCustomersTable">
 
-                            <th>Spend</th>
+                            <thead>
 
-                        </tr>
+                                <tr>
 
-                    </table>
+                                    <th>
+                                        Customer
+                                    </th>
+
+                                    <th>
+                                        Spend
+                                    </th>
+
+                                    <th>
+                                        Rewards
+                                    </th>
+
+                                </tr>
+
+                            </thead>
+
+                            <tbody>
+
+                                <tr>
+
+                                    <td colspan="3" style="
+                                        text-align:center;
+                                        color:var(--muted);
+                                        padding:34px;
+                                        ">
+
+                                        No customer data available
+
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
 
                 </div>
 
                 <!-- RECENT ACTIVITY -->
 
-                <div class="card">
+                <div class="card activity-card-pro">
 
-                    <div class="card-top" style="
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:24px;
-">
+                    <div class="card-head">
 
-                        <div class="card-title">
+                        <div>
 
-                            Recent Activity
+                            <div class="card-title">
+
+                                Recent Activity
+
+                            </div>
+
+                            <p class="card-sub">
+
+                                Live customer billing
+                                and reward activity.
+
+                            </p>
 
                         </div>
 
-                        <div class="card-badge green">
+                        <div class="live-badge">
 
-                            Realtime
+                            <span class="live-dot"></span>
+
+                            Live
 
                         </div>
 
                     </div>
 
-                    <div id="recentActivity" class="activity-list">
+                    <!-- ACTIVITY -->
 
-                        <p style="color:var(--muted);">
+                    <div id="recentActivity" class="activity-feed" style="margin-top:12px;">
 
-                            No recent activity.
+                        <div class="empty-state">
 
-                        </p>
+                            <div class="empty-icon">
+
+                                <i class="ti ti-activity"></i>
+
+                            </div>
+
+                            <h3>
+
+                                No Recent Activity
+
+                            </h3>
+
+                            <p>
+
+                                Customer activity
+                                will appear here.
+
+                            </p>
+
+                        </div>
 
                     </div>
 
@@ -390,129 +478,162 @@ margin-bottom:24px;
 
             </div>
 
-            <!-- ======================================
-     EXTRA SECTION
-====================================== -->
+            <!-- =====================================
+                 SECOND GRID
+            ====================================== -->
 
-            <div class="cards-grid" style="margin-top:28px;">
+            <div class="cards-grid" style="margin-top:30px;">
 
                 <!-- PERFORMANCE -->
 
-                <div class="card">
+                <div class="card performance-card">
 
-                    <div class="card-title">
+                    <div class="card-head">
 
-                        Business Performance
+                        <div>
+
+                            <div class="card-title">
+
+                                Business Performance
+
+                            </div>
+
+                            <p class="card-sub">
+
+                                Real-time growth
+                                and business analytics.
+
+                            </p>
+
+                        </div>
+
+                        <!-- SCORE -->
+
+                        <div class="performance-score">
+
+                            <span>
+
+                                92%
+
+                            </span>
+
+                        </div>
 
                     </div>
 
-                    <div class="performance-box">
+                    <!-- PERFORMANCE ITEMS -->
 
-                        <!-- ITEM -->
+                    <div class="perf-item">
 
-                        <div class="performance-item" style="margin-bottom:24px;">
+                        <div class="perf-labels">
 
-                            <div style="
-display:flex;
-justify-content:space-between;
-margin-bottom:10px;
-">
+                            <span>
 
-                                <div class="perf-label">
+                                Customer Growth
 
-                                    Customer Growth
+                            </span>
 
-                                </div>
+                            <span>
 
-                                <div>
+                                78%
 
-                                    78%
-
-                                </div>
-
-                            </div>
-
-                            <div class="perf-progress">
-
-                                <div class="perf-fill" style="width:78%;">
-
-                                </div>
-
-                            </div>
+                            </span>
 
                         </div>
 
-                        <!-- ITEM -->
+                        <div class="perf-bar">
 
-                        <div class="performance-item" style="margin-bottom:24px;">
-
-                            <div style="
-display:flex;
-justify-content:space-between;
-margin-bottom:10px;
-">
-
-                                <div class="perf-label">
-
-                                    Revenue Growth
-
-                                </div>
-
-                                <div>
-
-                                    64%
-
-                                </div>
-
-                            </div>
-
-                            <div class="perf-progress">
-
-                                <div class="perf-fill blue" style="
-width:64%;
-background:#3b82f6;
-">
-
-                                </div>
-
-                            </div>
+                            <div class="perf-fill green" style="width:78%;"></div>
 
                         </div>
 
-                        <!-- ITEM -->
+                    </div>
 
-                        <div class="performance-item">
+                    <div class="perf-item">
 
-                            <div style="
-display:flex;
-justify-content:space-between;
-margin-bottom:10px;
-">
+                        <div class="perf-labels">
 
-                                <div class="perf-label">
+                            <span>
 
-                                    Reward Usage
+                                Revenue Growth
 
-                                </div>
+                            </span>
 
-                                <div>
+                            <span>
 
-                                    48%
+                                64%
 
-                                </div>
+                            </span>
 
-                            </div>
+                        </div>
 
-                            <div class="perf-progress">
+                        <div class="perf-bar">
 
-                                <div class="perf-fill orange" style="
-width:48%;
-background:#f59e0b;
-">
+                            <div class="perf-fill blue" style="width:64%;"></div>
 
-                                </div>
+                        </div>
 
-                            </div>
+                    </div>
+
+                    <div class="perf-item">
+
+                        <div class="perf-labels">
+
+                            <span>
+
+                                Reward Usage
+
+                            </span>
+
+                            <span>
+
+                                48%
+
+                            </span>
+
+                        </div>
+
+                        <div class="perf-bar">
+
+                            <div class="perf-fill orange" style="width:48%;"></div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- MINI STATS -->
+
+                    <div class="performance-bottom" style="margin-top:34px;">
+
+                        <div class="perf-mini">
+
+                            <span>
+
+                                Monthly Revenue
+
+                            </span>
+
+                            <strong>
+
+                                ₹2.4L
+
+                            </strong>
+
+                        </div>
+
+                        <div class="perf-mini">
+
+                            <span>
+
+                                Loyalty Growth
+
+                            </span>
+
+                            <strong>
+
+                                +24%
+
+                            </strong>
 
                         </div>
 
@@ -522,19 +643,34 @@ background:#f59e0b;
 
                 <!-- QUICK ACTIONS -->
 
-                <div class="card">
+                <div class="card quick-card">
 
-                    <div class="card-title">
+                    <div class="card-head">
 
-                        Quick Actions
+                        <div>
+
+                            <div class="card-title">
+
+                                Quick Actions
+
+                            </div>
+
+                            <p class="card-sub">
+
+                                Fast access to business tools.
+
+                            </p>
+
+                        </div>
 
                     </div>
 
+                    <!-- ACTION BUTTONS -->
+
                     <div class="quick-actions" style="
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:16px;
-">
+                        margin-top:auto;
+                        padding-top:8px;
+                        ">
 
                         <a href="staff.html" class="quick-btn">
 
@@ -546,9 +682,9 @@ gap:16px;
 
                         <a href="customer.html" class="quick-btn">
 
-                            <i class="ti ti-search"></i>
+                            <i class="ti ti-user-search"></i>
 
-                            Search Customer
+                            Customer
 
                         </a>
 
@@ -556,7 +692,7 @@ gap:16px;
 
                             <i class="ti ti-gift"></i>
 
-                            Redeem Reward
+                            Redeem
 
                         </a>
 
@@ -564,7 +700,7 @@ gap:16px;
 
                             <i class="ti ti-chart-bar"></i>
 
-                            View Analytics
+                            Analytics
 
                         </a>
 
@@ -574,18 +710,12 @@ gap:16px;
 
             </div>
 
-            <!-- ======================================
-     FOOTER
-====================================== -->
+            <!-- FOOTER -->
 
-            <div style="
-margin-top:40px;
-text-align:center;
-color:var(--muted);
-font-size:14px;
-">
+            <div class="dashboard-footer">
 
-                LoyaltyIQ © 2026 — Smart Loyalty Platform
+                LoyaltyIQ © 2026 —
+                Smart AI Powered Loyalty Platform
 
             </div>
 
@@ -593,9 +723,7 @@ font-size:14px;
 
     </div>
 
-    <!-- ======================================
-     JS
-====================================== -->
+    <!-- JS -->
 
     <script src="./js/dashboard.js"></script>
 

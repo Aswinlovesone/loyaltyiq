@@ -11,13 +11,26 @@
         Settings — LoyaltyIQ
     </title>
 
+    <!-- GOOGLE FONTS -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- TABLER ICONS -->
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+
+    <!-- CSS -->
+
     <link rel="stylesheet" href="./css/style.css">
 
     <link rel="stylesheet" href="./css/dashboard.css">
 
     <link rel="stylesheet" href="./css/responsive.css">
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 
 </head>
 
@@ -28,6 +41,8 @@
         <!-- SIDEBAR -->
 
         <aside class="sidebar">
+
+            <!-- BRAND -->
 
             <div class="sidebar-brand">
 
@@ -41,19 +56,21 @@
 
                     <div class="sb-name">
 
-                        Settings
+                        LoyaltyIQ
 
                     </div>
 
                     <div class="sb-sub">
 
-                        Platform Preferences
+                        Business Settings
 
                     </div>
 
                 </div>
 
             </div>
+
+            <!-- NAVIGATION -->
 
             <div class="sidebar-nav">
 
@@ -113,31 +130,76 @@
 
         <main class="dashboard-main">
 
-            <h1 class="page-title">
+            <!-- TOPBAR -->
 
-                Settings
+            <div class="topbar">
 
-            </h1>
+                <div>
 
-            <p class="page-sub">
+                    <h1 class="page-title">
 
-                Manage your business platform settings.
+                        Platform Settings
 
-            </p>
+                    </h1>
+
+                    <p class="page-sub">
+
+                        Manage business preferences,
+                        rewards and notifications.
+
+                    </p>
+
+                </div>
+
+                <div class="topbar-actions">
+
+                    <button class="btn-secondary">
+
+                        <i class="ti ti-shield-check"></i>
+
+                        Secure Settings
+
+                    </button>
+
+                </div>
+
+            </div>
 
             <!-- SETTINGS GRID -->
 
             <div class="cards-grid" style="margin-top:30px;">
 
-                <!-- BUSINESS -->
+                <!-- BUSINESS SETTINGS -->
 
-                <div class="card">
+                <div class="card settings-card">
 
-                    <div class="card-title">
+                    <div class="settings-head">
 
-                        Business Information
+                        <div class="settings-icon blue">
+
+                            <i class="ti ti-building-store"></i>
+
+                        </div>
+
+                        <div>
+
+                            <div class="card-title">
+
+                                Business Information
+
+                            </div>
+
+                            <p class="card-sub">
+
+                                Manage your business profile.
+
+                            </p>
+
+                        </div>
 
                     </div>
+
+                    <!-- FORM -->
 
                     <div class="fgroup">
 
@@ -147,7 +209,13 @@
 
                         </label>
 
-                        <input id="businessName" type="text" placeholder="LoyaltyIQ Cafe">
+                        <div class="input-wrap">
+
+                            <i class="ti ti-building-store"></i>
+
+                            <input id="businessName" type="text" placeholder="LoyaltyIQ Cafe">
+
+                        </div>
 
                     </div>
 
@@ -159,7 +227,13 @@
 
                         </label>
 
-                        <input id="businessEmail" type="email" placeholder="contact@email.com">
+                        <div class="input-wrap">
+
+                            <i class="ti ti-mail"></i>
+
+                            <input id="businessEmail" type="email" placeholder="contact@email.com">
+
+                        </div>
 
                     </div>
 
@@ -171,7 +245,13 @@
 
                         </label>
 
-                        <input id="businessPhone" type="tel" placeholder="9876543210">
+                        <div class="input-wrap">
+
+                            <i class="ti ti-phone"></i>
+
+                            <input id="businessPhone" type="tel" placeholder="9876543210">
+
+                        </div>
 
                     </div>
 
@@ -179,13 +259,35 @@
 
                 <!-- REWARD SETTINGS -->
 
-                <div class="card">
+                <div class="card settings-card">
 
-                    <div class="card-title">
+                    <div class="settings-head">
 
-                        Reward Settings
+                        <div class="settings-icon green">
+
+                            <i class="ti ti-gift"></i>
+
+                        </div>
+
+                        <div>
+
+                            <div class="card-title">
+
+                                Reward Settings
+
+                            </div>
+
+                            <p class="card-sub">
+
+                                Configure loyalty rewards.
+
+                            </p>
+
+                        </div>
 
                     </div>
+
+                    <!-- FORM -->
 
                     <div class="fgroup">
 
@@ -195,7 +297,13 @@
 
                         </label>
 
-                        <input id="rewardPercent" type="number" placeholder="10">
+                        <div class="input-wrap">
+
+                            <i class="ti ti-percentage"></i>
+
+                            <input id="rewardPercent" type="number" placeholder="10">
+
+                        </div>
 
                     </div>
 
@@ -203,11 +311,17 @@
 
                         <label class="flabel">
 
-                            Currency
+                            Currency Symbol
 
                         </label>
 
-                        <input id="currency" type="text" placeholder="₹">
+                        <div class="input-wrap">
+
+                            <i class="ti ti-currency-rupee"></i>
+
+                            <input id="currency" type="text" placeholder="₹">
+
+                        </div>
 
                     </div>
 
@@ -219,7 +333,13 @@
 
                         </label>
 
-                        <input id="minRedeem" type="number" placeholder="100">
+                        <div class="input-wrap">
+
+                            <i class="ti ti-wallet"></i>
+
+                            <input id="minRedeem" type="number" placeholder="100">
+
+                        </div>
 
                     </div>
 
@@ -229,75 +349,159 @@
 
             <!-- NOTIFICATIONS -->
 
-            <div class="card" style="margin-top:28px;">
+            <div class="card notification-card" style="margin-top:30px;">
 
-                <div class="card-title">
+                <div class="settings-head">
 
-                    Notifications
+                    <div class="settings-icon purple">
+
+                        <i class="ti ti-bell"></i>
+
+                    </div>
+
+                    <div>
+
+                        <div class="card-title">
+
+                            Notifications
+
+                        </div>
+
+                        <p class="card-sub">
+
+                            Manage alert preferences.
+
+                        </p>
+
+                    </div>
 
                 </div>
 
-                <div style="
-display:flex;
-flex-direction:column;
-gap:20px;
-">
+                <!-- OPTIONS -->
 
-                    <label style="
-display:flex;
-align-items:center;
-gap:12px;
-">
+                <div class="notification-grid">
 
-                        <input id="emailNotify" type="checkbox">
+                    <!-- ITEM -->
 
-                        Email Notifications
+                    <div class="notify-item">
 
-                    </label>
+                        <div>
 
-                    <label style="
-display:flex;
-align-items:center;
-gap:12px;
-">
+                            <div class="notify-title">
 
-                        <input id="smsNotify" type="checkbox">
+                                Email Notifications
 
-                        SMS Notifications
+                            </div>
 
-                    </label>
+                            <div class="notify-sub">
 
-                    <label style="
-display:flex;
-align-items:center;
-gap:12px;
-">
+                                Receive important updates.
 
-                        <input id="rewardNotify" type="checkbox">
+                            </div>
 
-                        Reward Alerts
+                        </div>
 
-                    </label>
+                        <label class="switch">
+
+                            <input id="emailNotify" type="checkbox">
+
+                            <span class="slider"></span>
+
+                        </label>
+
+                    </div>
+
+                    <!-- ITEM -->
+
+                    <div class="notify-item">
+
+                        <div>
+
+                            <div class="notify-title">
+
+                                SMS Notifications
+
+                            </div>
+
+                            <div class="notify-sub">
+
+                                Get SMS customer alerts.
+
+                            </div>
+
+                        </div>
+
+                        <label class="switch">
+
+                            <input id="smsNotify" type="checkbox">
+
+                            <span class="slider"></span>
+
+                        </label>
+
+                    </div>
+
+                    <!-- ITEM -->
+
+                    <div class="notify-item">
+
+                        <div>
+
+                            <div class="notify-title">
+
+                                Reward Alerts
+
+                            </div>
+
+                            <div class="notify-sub">
+
+                                Notify reward activities.
+
+                            </div>
+
+                        </div>
+
+                        <label class="switch">
+
+                            <input id="rewardNotify" type="checkbox">
+
+                            <span class="slider"></span>
+
+                        </label>
+
+                    </div>
 
                 </div>
 
             </div>
 
-            <!-- SAVE -->
+            <!-- ACTIONS -->
 
-            <button id="saveSettingsBtn" class="btn-primary" style="
-margin-top:28px;
-">
+            <div class="settings-actions">
 
-                <i class="ti ti-device-floppy"></i>
+                <button id="resetSettingsBtn" class="btn-secondary">
 
-                Save Settings
+                    <i class="ti ti-refresh"></i>
 
-            </button>
+                    Reset
+
+                </button>
+
+                <button id="saveSettingsBtn" class="btn-primary">
+
+                    <i class="ti ti-device-floppy"></i>
+
+                    Save Settings
+
+                </button>
+
+            </div>
 
         </main>
 
     </div>
+
+    <!-- JS -->
 
     <script src="./js/settings.js"></script>
 

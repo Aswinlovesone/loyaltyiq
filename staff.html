@@ -11,13 +11,26 @@
         Staff Panel — LoyaltyIQ
     </title>
 
+    <!-- GOOGLE FONTS -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- TABLER ICONS -->
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+
+    <!-- CSS -->
+
     <link rel="stylesheet" href="./css/style.css">
 
     <link rel="stylesheet" href="./css/dashboard.css">
 
     <link rel="stylesheet" href="./css/responsive.css">
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 
 </head>
 
@@ -25,9 +38,13 @@
 
     <div class="dashboard-layout">
 
-        <!-- SIDEBAR -->
+        <!-- =====================================
+             SIDEBAR
+        ====================================== -->
 
         <aside class="sidebar">
+
+            <!-- BRAND -->
 
             <div class="sidebar-brand">
 
@@ -40,16 +57,22 @@
                 <div>
 
                     <div class="sb-name">
-                        Staff Panel
+
+                        LoyaltyIQ
+
                     </div>
 
                     <div class="sb-sub">
-                        Billing Management
+
+                        Staff Management
+
                     </div>
 
                 </div>
 
             </div>
+
+            <!-- NAVIGATION -->
 
             <div class="sidebar-nav">
 
@@ -85,80 +108,390 @@
 
                 </a>
 
+                <a class="snav" href="analytics.html">
+
+                    <i class="ti ti-chart-bar"></i>
+
+                    Analytics
+
+                </a>
+
+                <a class="snav" href="settings.html">
+
+                    <i class="ti ti-settings"></i>
+
+                    Settings
+
+                </a>
+
+            </div>
+
+            <!-- SIDEBAR MINI CARD -->
+
+            <div class="sidebar-footer-card" style="
+                margin-top:40px;
+                padding:22px;
+                border-radius:26px;
+                background:rgba(255,255,255,0.05);
+                border:1px solid rgba(255,255,255,0.08);
+                ">
+
+                <div style="
+                    color:var(--muted);
+                    font-size:13px;
+                    margin-bottom:10px;
+                ">
+
+                    Staff Activity
+
+                </div>
+
+                <div style="
+                    font-size:34px;
+                    font-weight:800;
+                ">
+
+                    148
+
+                </div>
+
+                <div style="
+                    margin-top:10px;
+                    color:var(--muted);
+                    font-size:13px;
+                ">
+
+                    Bills added today
+
+                </div>
+
             </div>
 
         </aside>
 
-        <!-- MAIN -->
+        <!-- =====================================
+             MAIN
+        ====================================== -->
 
         <main class="dashboard-main">
 
-            <h1 class="page-title">
-                Add Customer Bill
-            </h1>
+            <!-- TOPBAR -->
 
-            <p class="page-sub">
+            <div class="topbar">
 
-                Add customer purchases &
-                reward points automatically.
+                <div>
 
-            </p>
+                    <h1 class="page-title">
 
-            <!-- CARD -->
+                        Staff Billing Panel
 
-            <div class="card" style="margin-top:30px; max-width:600px;">
+                    </h1>
 
-                <div class="fgroup">
+                    <p class="page-sub">
 
-                    <label class="flabel">
+                        Add customer bills and automatically
+                        calculate loyalty rewards.
 
-                        Customer Phone Number
-
-                    </label>
-
-                    <input id="customerPhone" type="tel" placeholder="9876543210">
+                    </p>
 
                 </div>
 
-                <div class="fgroup">
+                <!-- ACTION -->
 
-                    <label class="flabel">
+                <div class="topbar-actions">
 
-                        Bill Amount
+                    <button class="btn-secondary">
 
-                    </label>
+                        <i class="ti ti-receipt"></i>
 
-                    <input id="billAmount" type="number" placeholder="500">
+                        Billing Activity
+
+                    </button>
 
                 </div>
-
-                <button id="addBillBtn" class="btn-primary">
-
-                    <i class="ti ti-plus"></i>
-
-                    Add Bill
-
-                </button>
 
             </div>
 
-            <!-- RECENT -->
+            <!-- =====================================
+                 MAIN GRID
+            ====================================== -->
 
-            <div class="card" style="margin-top:30px;">
+            <div class="cards-grid" style="margin-top:30px;">
 
-                <div class="card-title">
+                <!-- ADD BILL -->
 
-                    Recent Bills
+                <div class="card addbill-card">
+
+                    <div class="card-head">
+
+                        <div style="
+                            display:flex;
+                            align-items:center;
+                            gap:18px;
+                        ">
+
+                            <div class="mcard-icon b">
+
+                                <i class="ti ti-plus"></i>
+
+                            </div>
+
+                            <div>
+
+                                <div class="card-title">
+
+                                    Add Customer Bill
+
+                                </div>
+
+                                <p class="card-sub">
+
+                                    Add purchases and generate rewards instantly.
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- PHONE -->
+
+                    <div class="fgroup" style="margin-top:20px;">
+
+                        <label class="flabel">
+
+                            Customer Phone Number
+
+                        </label>
+
+                        <div class="input-wrap">
+
+                            <i class="ti ti-phone"></i>
+
+                            <input id="customerPhone" type="tel" placeholder="Enter phone number">
+
+                        </div>
+
+                    </div>
+
+                    <!-- BILL -->
+
+                    <div class="fgroup">
+
+                        <label class="flabel">
+
+                            Bill Amount
+
+                        </label>
+
+                        <div class="input-wrap">
+
+                            <i class="ti ti-currency-rupee"></i>
+
+                            <input id="billAmount" type="number" placeholder="Enter amount">
+
+                        </div>
+
+                    </div>
+
+                    <!-- BUTTON -->
+
+                    <button id="addBillBtn" class="btn-primary full-btn" style="
+                        margin-top:10px;
+                        ">
+
+                        <i class="ti ti-plus"></i>
+
+                        Add Bill
+
+                    </button>
 
                 </div>
 
-                <div id="recentBills">
+                <!-- QUICK INSIGHTS -->
 
-                    <p style="color:var(--muted);">
+                <div class="card preview-card">
 
-                        No bills added yet.
+                    <div class="card-head">
 
-                    </p>
+                        <div style="
+                            display:flex;
+                            align-items:center;
+                            gap:18px;
+                        ">
+
+                            <div class="mcard-icon g">
+
+                                <i class="ti ti-chart-bar"></i>
+
+                            </div>
+
+                            <div>
+
+                                <div class="card-title">
+
+                                    Quick Insights
+
+                                </div>
+
+                                <p class="card-sub">
+
+                                    Live billing activity overview.
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- STATS -->
+
+                    <div class="stat-grid" style="margin-top:20px;">
+
+                        <div class="stat-item">
+
+                            <div class="stat-lbl">
+
+                                Today's Revenue
+
+                            </div>
+
+                            <div class="stat-val">
+
+                                ₹24,500
+
+                            </div>
+
+                        </div>
+
+                        <div class="stat-item">
+
+                            <div class="stat-lbl">
+
+                                Bills Added
+
+                            </div>
+
+                            <div class="stat-val">
+
+                                148
+
+                            </div>
+
+                        </div>
+
+                        <div class="stat-item">
+
+                            <div class="stat-lbl">
+
+                                Rewards Issued
+
+                            </div>
+
+                            <div class="stat-val">
+
+                                ₹4,240
+
+                            </div>
+
+                        </div>
+
+                        <div class="stat-item">
+
+                            <div class="stat-lbl">
+
+                                Repeat Customers
+
+                            </div>
+
+                            <div class="stat-val">
+
+                                68%
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- =====================================
+                 RECENT BILLS
+            ====================================== -->
+
+            <div class="card" style="margin-top:30px;">
+
+                <!-- HEADER -->
+
+                <div class="recent-head" style="
+                    display:flex;
+                    align-items:center;
+                    justify-content:space-between;
+                    gap:20px;
+                    margin-bottom:26px;
+                    flex-wrap:wrap;
+                    ">
+
+                    <div>
+
+                        <div class="card-title">
+
+                            Recent Bills
+
+                        </div>
+
+                        <p class="card-sub">
+
+                            Latest customer transactions.
+
+                        </p>
+
+                    </div>
+
+                    <!-- EXPORT -->
+
+                    <button class="btn-secondary small-btn">
+
+                        <i class="ti ti-download"></i>
+
+                        Export
+
+                    </button>
+
+                </div>
+
+                <!-- LIST -->
+
+                <div id="recentBills" class="recent-bills-list">
+
+                    <div class="empty-state">
+
+                        <div class="empty-icon">
+
+                            <i class="ti ti-receipt-off"></i>
+
+                        </div>
+
+                        <h3>
+
+                            No Bills Added Yet
+
+                        </h3>
+
+                        <p>
+
+                            Added customer bills will appear here.
+
+                        </p>
+
+                    </div>
 
                 </div>
 
